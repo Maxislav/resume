@@ -1,0 +1,277 @@
+
+@navColor: #d5d8e5;
+@border-color: #34414f;
+
+.text(){
+  color: #585d64;
+  text-shadow: 0 1px 0px rgba(255,255,255,0.9), 0 -1px 0px rgba0(0,0,0,0.7);
+  font-weight: bold;
+}
+
+.background-rear(){
+  background: -moz-linear-gradient(top,  rgba(242,246,248,1) 0%, rgba(242,246,248,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(242,246,248,1)), color-stop(100%,rgba(242,246,248,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(242,246,248,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(242,246,248,0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(242,246,248,1) 0%,rgba(242,246,248,0) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(242,246,248,1) 0%,rgba(242,246,248,0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#00f2f6f8',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+//главный фон
+.background(){
+  background: #596a72; /* Old browsers */
+  background: -moz-linear-gradient(top,  #596a72 0%, #cedce7 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#596a72), color-stop(100%,#cedce7)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #596a72 0%,#cedce7 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #596a72 0%,#cedce7 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #596a72 0%,#cedce7 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #596a72 0%,#cedce7 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', endColorstr='#cedce7',GradientType=0 ); /* IE6-9 */
+}
+.nav-panel-back(){
+  background: #f2f6f8; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f6f8), color-stop(50%,#d8e1e7), color-stop(51%,#b5c6d0), color-stop(100%,#e0eff9)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=0 ); /* IE6-9 */
+
+}
+.nav-panel(){
+ background: transparent;
+
+  border-right: 1px solid @border-color;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid @border-color;
+
+}
+.nav-panel-active(){
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 45%, rgba(242,246,248,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(45%,rgba(255,255,255,1)), color-stop(100%,rgba(242,246,248,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 45%,rgba(242,246,248,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,1) 45%,rgba(242,246,248,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,1) 45%,rgba(242,246,248,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 45%,rgba(242,246,248,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f6f8',GradientType=0 ); /* IE6-9 */
+
+  //box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+  	border-top-right-radius: 5px;
+	border-bottom: none;
+}
+.nav-panel-hover(){
+  background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 27%, rgba(255,255,255,0.4) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(27%,rgba(255,255,255,0.4)), color-stop(100%,rgba(255,255,255,0.4))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) 27%,rgba(255,255,255,0.4) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) 27%,rgba(255,255,255,0.4) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) 27%,rgba(255,255,255,0.4) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) 27%,rgba(255,255,255,0.4) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#66ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+body{
+  .background;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  font-family: Tahoma, Geneva, sans-serif;
+
+}
+@media (max-width: 1000px) {
+  .main-block{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .content{
+	padding: 10px 5px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .main-block{
+    width: 1000px;
+    margin: 0 auto;
+  }.content{
+	   padding: 20px 40px;
+	 }
+
+}
+
+.head{
+  background: url("../img/zagolovok.jpg");
+  background-size: 100% 100%;
+ // background: #000;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid white;
+  &>select{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border: none;
+    background: transparent;
+    outline: none;
+	color: white;
+	option{
+	  color: white;
+	  background: transparent;
+	  background-color: gray;
+	  padding: 1px 5px;
+	}
+  }
+}
+.main-block{
+  //position: absolute;
+}
+.back{
+  position: absolute;
+  width: 100%;
+ // height: 80px;
+//  box-shadow: 0 2px 25px rgba(0,0,0,0.7);
+
+  .back-head{
+	background: #000;
+}
+  .back-nav{
+	.nav-panel-back;
+	border-bottom: 1px solid @border-color;
+  }
+}
+
+.body{
+  position: relative;
+}
+.book{
+ //background: @navColor;
+//  box-shadow: 0 2px 25px rgba(0,0,0,0.7);
+  .nav-panel{
+	display: table;
+	width: 100%;
+
+
+	&>div{
+
+
+	  text-align: center;
+	  display: table-row;
+	  &>a{
+		display: table-cell;
+		width: 20%;
+		height: 30px;
+		//box-shadow: -10px 0px 20px rgba(101, 118, 139, 0.7);
+		vertical-align: middle;
+		.nav-panel;
+
+		.text;
+		text-decoration: none;
+		color: #000000;
+		&.active{
+		  .nav-panel-active;
+		  color: #000000;
+		  &:hover{
+			.nav-panel-active;
+		  }
+		}
+		&:hover{
+		  .nav-panel-hover;
+		}
+		&:active{
+		  background: white;
+		  color: #e6ecff;
+		}
+	  }
+	}
+  }
+}
+#triangle-bottomleft {
+  width: 0;
+  height: 0;
+  border-bottom: 30px solid red;
+  border-right: 30px solid transparent;float: right;
+}
+.content{
+  background-color:  #F2F6F8;
+ // padding: 20px 40px;
+  min-height: 200px;
+  text-align: justify;
+  text-indent: 20px;
+  ul{
+    margin-left: 40px;
+  }
+  .sprite-orbit{
+
+	.orbit-wrapper{
+	  margin: 0 auto;
+	}
+  }
+  .item-block{
+
+	padding: 0 5px 5px 5px;
+	text-align: justify;
+	margin-bottom: -1px;
+
+	&>div{
+	  box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+	  background-color:#ffffff ;
+	  padding: 20px;
+	}
+  }
+  .detail a{
+	display: inline-block;
+	padding: 5px 40px 5px 15px;
+	background: #ffffff;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+	text-indent: 0;
+	text-decoration: none;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	background: url("../img/arrow.png") #fff no-repeat right 5px center;
+	background-size: auto 90%;
+	color: @border-color;
+  }
+  .container-item{
+	margin-top: 20px;
+  }
+}
+.view-container{
+  min-height: 100px;
+  .background-rear;
+}
+h3{
+  margin: 20px 0;
+}
+h4{
+  margin: 15px 0;
+}
+p{
+  margin-top: 10px;
+}
+ul.none li{
+  list-style: none;
+}
+.item{
+  margin: 10px 0;
+}
+
+.title-monitoring{
+  margin: 20px;
+  background: url("../module/web/monitoring/title.jpg") no-repeat center;
+  background-size: 100% auto;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "t":"IT skills",
+        "href": "#/home"
+    },
+    {
+        "t":"Experience",
+        "href": "#/about"
+    },
+    {
+        "t":"Web",
+        "href": "#/web"
+    },
+    {
+        "t":"Design",
+        "href": "#/design"
+    },
+	{
+		"t":"Contact",
+		"href": "#/contact"
+	}
+]
