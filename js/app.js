@@ -2,7 +2,6 @@ angular.module('phonecatAnimations', ['ngAnimate'])
 var appm = angular.module('appm', [
         'ngRoute',
         'navControllers',
-
         'phonecatAnimations'
     ]).directive('directiveName',function () {
     return function ($scope, element, attrs) {
@@ -22,17 +21,19 @@ var navControllers = angular.module('navControllers', [ ])
     .directive('orbit', function ($http, $rootScope) {
 
         return function ($scope, element, attrs) {
-
             if (!$rootScope.orbit) {
 
                 $http.get('lib/jQuery/jquery.orbit-1.3.0.js').success(function (data) {
                     $rootScope.orbit = data;
                     eval(data);
-                    $(element).orbit();
+                    $(element).orbit()
+                    $(element).css({opacity:1})
+
                 })
 
             } else {
                 $(element).orbit();
+                $(element).css({opacity:1})
             }
         }
     })

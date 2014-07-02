@@ -48,8 +48,6 @@ navControllers.controller('home', function ($scope, $http, $routeParams, $rootSc
 		$scope.content = 'module/home/home_'+$scope.lang+'.html';
        // $($rootElement).fadeTo(222,1)
 	}
-
-
 	getContent();
 	$scope.act.call($scope.el[0]);
 	$rootScope.changeLang = function () {
@@ -86,12 +84,15 @@ navControllers.controller('web', function ($scope, $http, $routeParams, $rootSco
 		});
 		if($routeParams.type){
 			$scope.content = 'module/web/'+$routeParams.type+'/'+$routeParams.type+'_'+$scope.lang+'.html';
+            ///$($scope.content).css({opacity:1})
 		}else{
 			$scope.content = 'module/web/web_'+$scope.lang+'.html';
 		}
 
 	}
 	getContent();
+    $scope.pp = 'block';
+
 	$scope.act.call($scope.el[2]);
 	$rootScope.changeLang = function () {
 		getContent()
@@ -107,6 +108,21 @@ navControllers.controller('contact', function ($scope, $http, $routeParams, $roo
 
     getContent();
     $scope.act.call($scope.el[4]);
+    $rootScope.changeLang = function () {
+        getContent()
+    }
+})
+
+navControllers.controller('design', function ($scope, $http, $routeParams, $rootScope) {
+    function getContent() {
+        $http.get('module/design/' + $scope.lang + '.json').success(function (data) {
+            $scope.text = data;
+        });
+        $scope.content = 'module/design/design_'+$scope.lang+'.html';
+    }
+
+    getContent();
+    $scope.act.call($scope.el[3]);
     $rootScope.changeLang = function () {
         getContent()
     }

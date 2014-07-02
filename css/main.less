@@ -275,3 +275,18 @@ ul.none li{
   width: 100%;
   height: 100%;
 }
+
+.sprite-orbit{
+
+  &>div{
+    overflow: hidden;
+    width: 800px;
+    height: 390px;
+
+    &>div.orbit{
+      opacity: 0;
+      transition: opacity 0.5s;
+      -webkit-transition: opacity 0.5s ease;
+    }
+  }
+}
