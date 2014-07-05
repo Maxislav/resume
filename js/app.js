@@ -70,6 +70,10 @@ appm.config(['$routeProvider',
                 templateUrl: 'module/contact/contact.html',
                 controller: 'contact'
             }).
+            when('/print', {
+                templateUrl: 'module/contact/contact.html',
+                controller: 'print'
+            }).
             otherwise({
                 redirectTo: '/home'
             });

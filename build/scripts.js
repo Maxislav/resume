@@ -2540,6 +2540,10 @@ appm.config(['$routeProvider',
                 templateUrl: 'module/contact/contact.html',
                 controller: 'contact'
             }).
+            when('/print', {
+                templateUrl: 'module/contact/contact.html',
+                controller: 'print'
+            }).
             otherwise({
                 redirectTo: '/home'
             });
@@ -2636,7 +2640,6 @@ navControllers.controller('web', function ($scope, $http, $routeParams, $rootSco
 		}else{
 			$scope.content = 'module/web/web_'+$scope.lang+'.html';
 		}
-
 	}
 	getContent();
     $scope.pp = 'block';
@@ -2671,6 +2674,20 @@ navControllers.controller('design', function ($scope, $http, $routeParams, $root
 
     getContent();
     $scope.act.call($scope.el[3]);
+    $rootScope.changeLang = function () {
+        getContent()
+    }
+})
+navControllers.controller('print', function ($scope, $http, $routeParams, $rootScope) {
+    function getContent() {
+        $http.get('module/design/' + $scope.lang + '.json').success(function (data) {
+            $scope.text = data;
+        });
+        $scope.content = 'module/design/design_'+$scope.lang+'.html';
+    }
+
+    getContent();
+    $scope.act.call($scope.el[5]);
     $rootScope.changeLang = function () {
         getContent()
     }

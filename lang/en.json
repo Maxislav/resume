@@ -18,5 +18,9 @@
 	{
 		"t":"Contact",
 		"href": "#/contact"
-	}
+	},
+    {
+        "t":"Print",
+        "href": "#/print"
+    }
 ]
