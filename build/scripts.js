@@ -2489,7 +2489,6 @@ var appm = angular.module('appm', [
 
 var navControllers = angular.module('navControllers', [ ])
     .directive('orbit', function ($http, $rootScope) {
-
         return function ($scope, element, attrs) {
             if (!$rootScope.orbit) {
 
@@ -2497,23 +2496,22 @@ var navControllers = angular.module('navControllers', [ ])
                     $rootScope.orbit = data;
                     eval(data);
                     $(element).orbit()
-                    $(element).css({opacity:1})
+                    $(element).css({opacity: 1})
 
                 })
 
             } else {
                 $(element).orbit();
-                $(element).css({opacity:1})
+                $(element).css({opacity: 1})
             }
         }
     })
 navControllers.run(function ($rootScope) {
     $rootScope.orbit = null
-
 })
 
 appm.config(['$routeProvider',
-    function ($routeProvider) {
+    function ($routeProvider, location) {
         $routeProvider.
             when('/home', {
                 templateUrl: 'module/home/home.html',

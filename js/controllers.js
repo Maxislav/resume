@@ -14,7 +14,9 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
 		$scope.chContent && $scope.chContent(p)
 		$rootScope.changeLang();
 	}
-	$location.path("olo");
+     var loc = ''+ $location.path();
+    $location.path('/dd');
+
 
 	$scope.cl = $scope.cl ? $scope.cl: [];
 	$scope.el = $scope.el ? $scope.el :[];
@@ -29,12 +31,12 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
 	}
 })
 
-appm.run(function ($rootScope) {
+appm.run(function ($rootScope, $location) {
 	$rootScope.changeLang = function () {
 
 	}
 	$rootScope.orbit;
-
+   // $location.path('/home')
 });
 
 
@@ -50,6 +52,8 @@ navControllers.controller('home', function ($scope, $http, $routeParams, $rootSc
 	}
 	getContent();
 	$scope.act.call($scope.el[0]);
+
+
 	$rootScope.changeLang = function () {
 		getContent()
 	}
@@ -61,7 +65,7 @@ navControllers.controller('home', function ($scope, $http, $routeParams, $rootSc
             $scope.element = null
         });*/
     }
-});
+})
 navControllers.controller('about', function ($scope, $http, $routeParams, $rootScope) {
 	function getContent() {
 		$http.get('module/about/' + $scope.lang + '.json').success(function (data) {
@@ -140,3 +144,4 @@ navControllers.controller('print', function ($scope, $http, $routeParams, $rootS
         getContent()
     }
 })
+
