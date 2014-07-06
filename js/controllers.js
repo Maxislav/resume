@@ -1,35 +1,7 @@
 'use strict';
 
-
-appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootScope) {
-	function lang(l) {
-		$http.get('lang/' + l + '.json').success(function (data) {
-			$scope.navs = data;
-		});
-	};
-	$scope.lang = "en";
-	lang("en");
-	$scope.chLang = function (p) {
-		lang($scope.lang);
-		$scope.chContent && $scope.chContent(p)
-		$rootScope.changeLang();
-	}
-     var loc = ''+ $location.path();
-    $location.path('/dd');
-
-
-	$scope.cl = $scope.cl ? $scope.cl: [];
-	$scope.el = $scope.el ? $scope.el :[];
-	$scope.act = function (){
-		for (var i=0; i<$scope.cl.length; i++){
-			(this.$index!=i) && ($scope.cl[i] = null)
-		}
-		$scope.cl[this.$index] ='active';
-	}
-	$scope.initEl = function(el){
-		$scope.el.push(this)
-	}
-})
+var el
+appm
 
 appm.run(function ($rootScope, $location) {
 	$rootScope.changeLang = function () {
@@ -43,10 +15,10 @@ appm.run(function ($rootScope, $location) {
 navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
 	function getContent() {
      //   $($rootElement).fadeTo(222,0)
-        $http.get('module/home/' + $scope.lang + '.json').success(function (data) {
+       /* $http.get('module/home/' + $scope.lang + '.json').success(function (data) {
 			$scope.text = data;
 
-		});
+		});*/
 		$scope.content = 'module/home/home_'+$scope.lang+'.html';
        // $($rootElement).fadeTo(222,1)
 	}
@@ -57,9 +29,16 @@ navControllers.controller('home', function ($scope, $http, $routeParams, $rootSc
 	$rootScope.changeLang = function () {
 		getContent()
 	}
+
+    $scope.inittt = function(){
+        getContent()
+    }
 }).directive('ngInclude', function () {
     return function ($scope, element, attrs) {
         $scope.element
+
+
+    //  $scope.inittt();
         //element
         /*$scope.$watch(attrs.viewContainer, function (value) {
             $scope.element = null
