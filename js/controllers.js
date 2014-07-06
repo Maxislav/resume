@@ -1,6 +1,48 @@
 'use strict';
 
 var el
+appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootScope, showService) {
+    //  showService.show()
+    function lang(l) {
+        $http.get('lang/' + l + '.json').success(function (data) {
+            $scope.navs = data;
+            //  $location.path('/dd');
+        });
+    };
+    $scope.lang = "en";
+    lang("en");
+    $scope.chLang = function (p) {
+        lang($scope.lang);
+        $scope.chContent && $scope.chContent(p)
+        $rootScope.changeLang();
+    }
+    var loc = '' + $location.path();
+    $location.path('/');
+
+
+    setTimeout(function () {
+          window.location.href = '#' + (loc ? loc : '/home')
+    }, 1)
+
+    $scope.cl = $scope.cl ? $scope.cl : [];
+    $scope.el = $scope.el ? $scope.el : [];
+    $scope.act = function () {
+        for (var i = 0; i < $scope.cl.length; i++) {
+            (this.$index != i) && ($scope.cl[i] = null)
+        }
+        $scope.cl[this.$index] = 'active';
+    }
+    $scope.initEl = function (el) {
+        $scope.el.push(this)
+    }
+
+    $scope.getLocation = function () {
+        return $location.path()
+    }
+    $scope.path = function (d) {
+        $location.path(d);
+    }
+})
 
 navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
     function getContent() {
@@ -24,48 +66,7 @@ navControllers.controller('home', function ($scope, $http, $routeParams, $rootSc
         getContent()
     }
 })
-appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootScope, showService) {
-  //  showService.show()
-    function lang(l) {
-        $http.get('lang/' + l + '.json').success(function (data) {
-            $scope.navs = data;
-            //  $location.path('/dd');
-        });
-    };
-    $scope.lang = "en";
-    lang("en");
-    $scope.chLang = function (p) {
-        lang($scope.lang);
-        $scope.chContent && $scope.chContent(p)
-        $rootScope.changeLang();
-    }
-    var loc = '' + $location.path();
-    $location.path('/');
 
-
-    setTimeout(function () {
-        window.location.href = '#' + loc
-    }, 1)
-
-    $scope.cl = $scope.cl ? $scope.cl : [];
-    $scope.el = $scope.el ? $scope.el : [];
-    $scope.act = function () {
-        for (var i = 0; i < $scope.cl.length; i++) {
-            (this.$index != i) && ($scope.cl[i] = null)
-        }
-        $scope.cl[this.$index] = 'active';
-    }
-    $scope.initEl = function (el) {
-        $scope.el.push(this)
-    }
-
-    $scope.getLocation = function () {
-        return $location.path()
-    }
-    $scope.path = function (d) {
-        $location.path(d);
-    }
-})
 
 
 appm.service('showService', function(){
