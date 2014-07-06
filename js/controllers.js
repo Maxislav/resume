@@ -1,50 +1,80 @@
 'use strict';
 
 var el
-appm
-
-appm.run(function ($rootScope, $location) {
-	$rootScope.changeLang = function () {
-
-	}
-	$rootScope.orbit;
-   // $location.path('/home')
-});
-
 
 navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
-	function getContent() {
-     //   $($rootElement).fadeTo(222,0)
-       /* $http.get('module/home/' + $scope.lang + '.json').success(function (data) {
-			$scope.text = data;
+    function getContent() {
+        //   $($rootElement).fadeTo(222,0)
+        /* $http.get('module/home/' + $scope.lang + '.json').success(function (data) {
+         $scope.text = data;
 
-		});*/
-		$scope.content = 'module/home/home_'+$scope.lang+'.html';
-       // $($rootElement).fadeTo(222,1)
-	}
-	getContent();
-	$scope.act.call($scope.el[0]);
+         });*/
+        $scope.content = 'module/home/home_'+$scope.lang+'.html';
+        // $($rootElement).fadeTo(222,1)
+    }
+    getContent();
+    $scope.act.call($scope.el[0]);
 
 
-	$rootScope.changeLang = function () {
-		getContent()
-	}
+    $rootScope.changeLang = function () {
+        getContent()
+    }
 
     $scope.inittt = function(){
         getContent()
     }
-}).directive('ngInclude', function () {
-    return function ($scope, element, attrs) {
-        $scope.element
+})
+appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootScope, showService) {
+  //  showService.show()
+    function lang(l) {
+        $http.get('lang/' + l + '.json').success(function (data) {
+            $scope.navs = data;
+            //  $location.path('/dd');
+        });
+    };
+    $scope.lang = "en";
+    lang("en");
+    $scope.chLang = function (p) {
+        lang($scope.lang);
+        $scope.chContent && $scope.chContent(p)
+        $rootScope.changeLang();
+    }
+    var loc = '' + $location.path();
+    $location.path('/');
 
 
-    //  $scope.inittt();
-        //element
-        /*$scope.$watch(attrs.viewContainer, function (value) {
-            $scope.element = null
-        });*/
+    setTimeout(function () {
+        window.location.href = '#' + loc
+    }, 1)
+
+    $scope.cl = $scope.cl ? $scope.cl : [];
+    $scope.el = $scope.el ? $scope.el : [];
+    $scope.act = function () {
+        for (var i = 0; i < $scope.cl.length; i++) {
+            (this.$index != i) && ($scope.cl[i] = null)
+        }
+        $scope.cl[this.$index] = 'active';
+    }
+    $scope.initEl = function (el) {
+        $scope.el.push(this)
+    }
+
+    $scope.getLocation = function () {
+        return $location.path()
+    }
+    $scope.path = function (d) {
+        $location.path(d);
     }
 })
+
+
+appm.service('showService', function(){
+    this.show = function(){
+        alert('dd');
+    }
+})
+
+
 navControllers.controller('about', function ($scope, $http, $routeParams, $rootScope) {
 	function getContent() {
 		$http.get('module/about/' + $scope.lang + '.json').success(function (data) {

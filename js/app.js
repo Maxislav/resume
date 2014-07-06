@@ -4,25 +4,37 @@ var appm = angular.module('appm', [
         'navControllers',
         'phonecatAnimations'
     ])
-    .directive('directiveName',function () {
-    return function ($scope, element, attrs) {
-        $scope.$watch(attrs.directiveName, function (value) {
-        });
-    }
-}).directive('viewContainer',function () {
-    return function ($scope, element, attrs) {
-        //element
-        $scope.$watch(attrs.viewContainer, function (value) {
-            $scope.element = null
-        });
-    }
-}).config(['$routeProvider',
+    .directive('viewContainer',function () {
+        return function ($scope, element, attrs) {
+            //element
+            $scope.$watch(attrs.viewContainer, function (value) {
+                $scope.element = null
+            });
+        }
+    })
+    .directive('kkk', function(){
+        return function ($scope, element, attrs) {
+            element
+            //angular.bootstrap(element, [])
+        }
+    })
+    .run(function ($rootScope, $location) {
+        $rootScope.changeLang = function () {
 
+        }
+        $rootScope.orbit;
+
+        // $location.path('/contact')
+    })
+
+
+
+
+appmConfig();
+function appmConfig(){
+    appm.config(['$routeProvider',
         function ($routeProvider) {
-
-
             $routeProvider.
-
                 when('/home', {
                     templateUrl: 'module/home/home.html',
                     controller: 'home'
@@ -53,53 +65,13 @@ var appm = angular.module('appm', [
                     controller: 'print'
                 }).
                 otherwise({
-                    redirectTo: '/home'
+                 //   redirectTo: '/home'
                     // controller: 'print'
                 })
 
         }
-    ]).controller('nav',function ($scope, $http, $location, $routeParams, $rootScope) {
-    function lang(l) {
-        $http.get('lang/' + l + '.json').success(function (data) {
-            $scope.navs = data;
-            //  $location.path('/dd');
-        });
-    };
-    $scope.lang = "en";
-    lang("en");
-    $scope.chLang = function (p) {
-        lang($scope.lang);
-        $scope.chContent && $scope.chContent(p)
-        $rootScope.changeLang();
-    }
-    var loc = '' + $location.path();
-    $location.path('/dd');
-
-
-setTimeout(function(){
-    window.location.href = '#'+loc
-}, 1)
-
-    $scope.cl = $scope.cl ? $scope.cl : [];
-    $scope.el = $scope.el ? $scope.el : [];
-    $scope.act = function () {
-        for (var i = 0; i < $scope.cl.length; i++) {
-            (this.$index != i) && ($scope.cl[i] = null)
-        }
-        $scope.cl[this.$index] = 'active';
-    }
-    $scope.initEl = function (el) {
-        $scope.el.push(this)
-    }
-
-    $scope.getLocation = function () {
-        return $location.path()
-    }
-    $scope.path = function (d) {
-        $location.path(d);
-    }
-})
-
+    ])
+}
 var navControllers = angular.module('navControllers', [ ])
     .directive('orbit', function ($http, $rootScope) {
         return function ($scope, element, attrs) {
