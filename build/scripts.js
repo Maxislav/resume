@@ -2482,6 +2482,14 @@ var appm = angular.module('appm', [
             });
         }
     })
+  /*  .directive('transport', function(){
+        return function ($scope, element, attrs) {
+            element
+            $scope.transport = element
+            //angular.bootstrap(element, [])
+        }
+    })*/
+
     .directive('kkk', function(){
         return function ($scope, element, attrs) {
             element
@@ -2556,6 +2564,37 @@ var navControllers = angular.module('navControllers', [ ])
                 $(element).orbit();
                 $(element).css({opacity: 1})
             }
+        }
+    })
+    .directive('transport', function(){
+        return function ($scope, element, attrs, $http, $rootScope) {
+            var largeImg = document.getElementById('largeImg');
+            var thumbs = document.getElementById('thumbs');
+            thumbs.onclick = function(e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+
+                while(target != this) {
+
+                    if (target.nodeName == 'A') {
+                        showThumbnail(target.href, target.title);
+                        return false;
+                    }
+
+                    target = target.parentNode;
+                }
+            }
+            function showThumbnail(href, title) {
+                largeImg.src = href;
+                largeImg.alt = title;
+            }
+            var imgs = thumbs.getElementsByTagName('img');
+            for(var i=0; i<imgs.length; i++) {
+                var url = imgs[i].parentNode.href;
+                var img = document.createElement('img');
+                img.src = url;
+            }
+
         }
     })
 navControllers.run(function ($rootScope) {
