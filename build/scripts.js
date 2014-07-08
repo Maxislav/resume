@@ -2651,13 +2651,7 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
 
 navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
     function getContent() {
-        //   $($rootElement).fadeTo(222,0)
-        /* $http.get('module/home/' + $scope.lang + '.json').success(function (data) {
-         $scope.text = data;
-
-         });*/
         $scope.content = 'module/home/home_'+$scope.lang+'.html';
-        // $($rootElement).fadeTo(222,1)
     }
     getContent();
     $scope.act.call($scope.el[0]);
@@ -2747,10 +2741,10 @@ navControllers.controller('design', function ($scope, $http, $routeParams, $root
 })
 navControllers.controller('print', function ($scope, $http, $routeParams, $rootScope) {
     function getContent() {
-        $http.get('module/design/' + $scope.lang + '.json').success(function (data) {
+        $http.get('module/print/' + $scope.lang + '.json').success(function (data) {
             $scope.text = data;
         });
-        $scope.content = 'module/design/design_'+$scope.lang+'.html';
+        $scope.content = 'module/print/print_'+$scope.lang+'.html';
     }
 
     getContent();
