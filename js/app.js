@@ -81,7 +81,6 @@ var navControllers = angular.module('navControllers', [ ])
     .directive('orbit', function ($http, $rootScope) {
         return function ($scope, element, attrs) {
             if (!$rootScope.orbit) {
-
                 $http.get('lib/jQuery/jquery.orbit-1.3.0.js').success(function (data) {
                     $rootScope.orbit = data;
                     eval(data);
@@ -93,6 +92,30 @@ var navControllers = angular.module('navControllers', [ ])
             } else {
                 $(element).orbit();
                 $(element).css({opacity: 1})
+            }
+        }
+    })
+    .directive('jscroll', function($http, $rootScope){
+        return function($scope, element, attrs){
+
+            if(!$rootScope.jscroll){
+                $http.get('lib/jQuery/jquery.scrollNav.min.js').success(function(data){
+                    $rootScope.jscroll = data;
+                    eval(data);
+                    $(element).scrollNav({
+                        headlineText: '',
+                        topLinkText: '',
+                        fixedMargin: 140,
+                        scrollOffset: 50
+                    })
+                })
+            }else{
+                $(element).scrollNav({
+                    headlineText: '',
+                    topLinkText: '',
+                    fixedMargin: 140,
+                    scrollOffset: 50
+                })
             }
         }
     })
@@ -127,8 +150,10 @@ var navControllers = angular.module('navControllers', [ ])
 
         }
     })
+
 navControllers.run(function ($rootScope) {
-    $rootScope.orbit = null
+    $rootScope.orbit = null;
+    $rootScope.jscroll = null;
 })
 
 
