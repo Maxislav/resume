@@ -98,10 +98,19 @@ var navControllers = angular.module('navControllers', [ ])
     .directive('jscroll', function($http, $rootScope){
         return function($scope, element, attrs){
 
-            if(!$rootScope.jscroll){
+
+			$(element).scrollNav({
+				headlineText: '',
+				topLinkText: '',
+				fixedMargin: 140,
+				scrollOffset: 50
+			})
+
+
+            /*if(!$rootScope.jscroll){
                 $http.get('lib/jQuery/jquery.scrollNav.min.js').success(function(data){
-                    $rootScope.jscroll = data;
-                    eval(data);
+                  //  $rootScope.jscroll = data;
+                  //  eval(data);
                     $(element).scrollNav({
                         headlineText: '',
                         topLinkText: '',
@@ -110,13 +119,13 @@ var navControllers = angular.module('navControllers', [ ])
                     })
                 })
             }else{
-                $(element).scrollNav({
+                *//*$(element).scrollNav({
                     headlineText: '',
                     topLinkText: '',
                     fixedMargin: 140,
                     scrollOffset: 50
-                })
-            }
+                })*//*
+            }*/
         }
     })
     .directive('transport', function(){
