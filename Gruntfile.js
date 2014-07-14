@@ -13,7 +13,8 @@ module.exports = function (grunt) {
                     'lib/angular/angular-route.min.js',
                     'lib/angular/angular-animate.js',
                     'lib/angular/angular-sanitize.js',
-                    'lib/jQuery/jquery-1.11.0.min.js',
+                    'lib/jQuery/jquery-1.11.1.js',
+                    'lib/jQuery/jquery.scrollNav.js',
                     'js/app.js',
                     'js/controllers.js'
                 ],
