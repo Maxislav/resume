@@ -153,21 +153,44 @@ body{
   width: 100%;
   position: relative;
   border-bottom: 2px solid white;
-  &>select{
+
+  .action{
     position: absolute;
     right: 0;
     bottom: 0;
-    border: none;
-    background: transparent;
-    outline: none;
-	color: white;
-	option{
-	  color: white;
-	  background: transparent;
-	  background-color: gray;
-	  padding: 1px 5px;
-	}
+    color: #ffffff;
+    padding: 5px;
+    .download{
+      display: inline-block;
+      margin-right: 5px;
+      border: 1px solid #ffffff;
+      padding: 1px 5px;
+      border-radius: 3px;
+      a{
+        text-decoration: none;
+        color: #ffffff;
+      }
+      &:hover{
+        a{
+          text-shadow: 0 0 3px #FFF, 0 0 3px #FFF, 0 0 20px #FFF ;
+        }
+      }
+    }
+    &>select{
+      display: inline-block;
+      border: none;
+      background: transparent;
+      outline: none;
+      color: white;
+      option{
+        color: white;
+        background: transparent;
+        background-color: gray;
+        padding: 1px 5px;
+      }
+    }
   }
+
 }
 .main-block{
   //position: absolute;
@@ -185,6 +208,9 @@ body{
 	.nav-panel-back;
 	border-bottom: 1px solid @border-color;
   }
+}
+.content-design{
+  margin-top: 20px;
 }
 
 .body{

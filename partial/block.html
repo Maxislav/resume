@@ -30,10 +30,22 @@
 			<div ng-controller="nav">
 				<div class="head no-print" directive-name="lang">
 
-					<select ng-model="lang" ng-change="chLang('{{lang}}')">
-						<option value="ru">Ru</option>
-						<option value="en">En</option>
-					</select>
+
+
+                   <div class="action">
+                       <div class="download">
+                           <a class=" no-print" href="Lipatov_en.pdf" download="CV_Lipatov">{{download}}</a>
+                       </div>
+                       <select ng-model="lang" ng-change="chLang('{{lang}}')">
+                           <option value="ru">Ru</option>
+                           <option value="en">En</option>
+                       </select>
+
+                   </div>
+
+
+
+
 				</div>
 				<div class="book" style=" border-top: 1px solid transparent">
 
