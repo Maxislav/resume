@@ -11,13 +11,25 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
     };
     $scope.lang = "en";
     lang("en");
+    $scope.download = 'Download'
     $scope.chLang = function (p) {
+        switch (p){
+            case 'ru':
+                $scope.download = 'Download'
+                break;
+            default :
+                $scope.download = 'Скачать'
+
+        }
+
         lang($scope.lang);
         $scope.chContent && $scope.chContent(p)
         $rootScope.changeLang();
     }
     var loc = '' + $location.path();
     $location.path('/');
+
+
 
 
     setTimeout(function () {
