@@ -12,13 +12,18 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
     $scope.lang = "en";
     lang("en");
     $scope.download = 'Download'
+	$scope.olo = 'Lipatov_en.pdf'
     $scope.chLang = function (p) {
         switch (p){
             case 'ru':
-                $scope.download = 'Download'
+				$scope.olo = 'Lipatov_en.pdf';
+                $scope.download = 'Download';
+
                 break;
             default :
-                $scope.download = 'Скачать'
+				$scope.olo = 'Lipatov_ru.pdf';
+                $scope.download = 'Скачать';
+
 
         }
 
