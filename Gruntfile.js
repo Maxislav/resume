@@ -8,8 +8,6 @@ module.exports = function (grunt) {
                 src: [
 
                     'lib/angular/angular.min.js',
-
-
                     'lib/angular/angular-route.min.js',
                     'lib/angular/angular-animate.js',
                     'lib/angular/angular-sanitize.js',
@@ -31,7 +29,16 @@ module.exports = function (grunt) {
             main: {
                 files: {
                     // Результат задачи concat
-                    'build/scripts.min.js': '<%= concat.main.dest %>'
+                    'build/scripts.min.js': [
+                        'lib/angular/angular.min.js',
+                        'lib/angular/angular-route.min.js',
+                        'lib/angular/angular-animate.js',
+                        'lib/angular/angular-sanitize.js',
+                        'lib/jQuery/jquery-1.11.0.min.js',
+                        'lib/jQuery/jquery.scrollNav.min.js',
+                        'js/app.js',
+                        'js/controllers.js'
+                    ]
                 }
             }
         },
@@ -82,7 +89,7 @@ module.exports = function (grunt) {
                     'js/app.js',
                     'js/controllers.js'
                 ],
-                tasks: ['concat','uglify'],
+                tasks: ['uglify'],
                 options: {
                     nospawn: true
                 }
@@ -98,7 +105,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');//
 
     // Задача по умолчанию
-    grunt.registerTask('default', ['concat','uglify','less', 'watch' ]);
+    grunt.registerTask('default', ['uglify','less', 'watch' ]);
     //grunt.registerTask('default', ['uglify' ]);
 
 };
