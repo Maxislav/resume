@@ -8,7 +8,8 @@ module.exports = function (grunt) {
         'lib/jQuery/jquery-1.11.0.min.js',
         'lib/jQuery/jquery.scrollNav.min.js',
         'js/app.js',
-        'js/controllers.js'
+        'js/controllers.js',
+        'js/dirrectiveSkill.js'
     ];
 
 
@@ -108,15 +109,7 @@ module.exports = function (grunt) {
                 }
             },
             js: {
-                files: [
-                    'lib/angular/angular.min.js',
-                    'lib/angular/angular-route.min.js',
-                    'lib/angular/angular-animate.js',
-                    'lib/angular/angular-sanitize.js',
-                    'lib/jQuery/jquery-1.11.0.min.js',
-                    'js/app.js',
-                    'js/controllers.js'
-                ],
+                files: uglyFiles,
                 tasks: ['uglify:dev'],
                 options: {
                     nospawn: true
