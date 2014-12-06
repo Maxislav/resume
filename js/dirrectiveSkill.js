@@ -3,7 +3,7 @@ navControllers.directive('blockSkill', function(factSkill, $timeout){
         restrict: 'A',
         templateUrl: 'partial/skillGraph.html',
         link: function(scope, el, attr){
-            factSkill.getSk( scope )
+            factSkill.getSk( scope );
         }
     }
 })
