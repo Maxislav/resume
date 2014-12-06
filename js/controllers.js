@@ -6,11 +6,18 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
     function lang(l) {
         $http.get('lang/' + l + '.json').success(function (data) {
             $scope.navs = data;
-            //  $location.path('/dd');
         });
     };
+    function langPpd(l){
+        $http.get('lang/ppd.' + l + '.json').success(function (data) {
+            $scope.langPpd = data;
+        });
+    }
+
     $scope.lang = "en";
     lang("en");
+    langPpd("en")
+
     $scope.download = 'Download'
 	$scope.olo = 'Lipatov_en.pdf'
     $scope.chLang = function (p) {
@@ -25,6 +32,7 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
                 $scope.download = 'Скачать';
         }
         lang($scope.lang);
+        langPpd($scope.lang);
         $scope.chContent && $scope.chContent(p)
         $rootScope.changeLang();
     }
@@ -122,8 +130,7 @@ navControllers.controller('contact', function ($scope, $http, $routeParams, $roo
             $scope.text = data;
         });
         $scope.content = 'module/contact/contact_'+$scope.lang+'.html';
-    }
-
+    };
     getContent();
     $scope.act.call($scope.el[4]);
     $rootScope.changeLang = function () {
