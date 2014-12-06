@@ -101,7 +101,7 @@ navControllers.factory('factSkill', function($http, $timeout){
         }
     }
     function setStartDate(string){
-        var initDate = new Date(2012,0,0);
+        var initDate = new Date(2013,0,1);
         var currrentDate = new Date();
         var parms = string.split('.');
         var date
@@ -118,7 +118,8 @@ navControllers.factory('factSkill', function($http, $timeout){
         var valueStart = date.getTime() - initDate.getTime();
         var allDate = currrentDate.getTime() - initDate.getTime();
         valueStart = 100*valueStart/allDate;
-        valueStart = Math.ceil(valueStart)
+        valueStart = Math.ceil(valueStart);
+       // console.log(valueStart)
         return valueStart
     }
 

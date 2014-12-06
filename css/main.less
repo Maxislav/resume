@@ -468,8 +468,18 @@ li{
   position: relative;
   height: 20px;
   width: 100%;
-  background: gray;
   overflow: hidden;
+
+  background: -moz-linear-gradient(left,  rgba(224,239,249,1) 0%, rgba(242,246,248,0.71) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(224,239,249,1)), color-stop(100%,rgba(242,246,248,0.71))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(224,239,249,1) 0%,rgba(242,246,248,0.71) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(224,239,249,1) 0%,rgba(242,246,248,0.71) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(224,239,249,1) 0%,rgba(242,246,248,0.71) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(224,239,249,1) 0%,rgba(242,246,248,0.71) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0eff9', endColorstr='#b5f2f6f8',GradientType=1 ); /* IE6-9 */
+
+
+
 
   &.show{
     height: inherit;
@@ -489,7 +499,15 @@ li{
     margin-top: -5px;
   }
   .green{
-    background: limegreen;
+    background: #f79e9e; /* Old browsers */
+    background: -moz-linear-gradient(left,  #f79e9e 0%, #62e200 46%, #62e200 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#f79e9e), color-stop(46%,#62e200), color-stop(100%,#62e200)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #f79e9e 0%,#62e200 46%,#62e200 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #f79e9e 0%,#62e200 46%,#62e200 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #f79e9e 0%,#62e200 46%,#62e200 100%); /* IE10+ */
+    background: linear-gradient(to right,  #f79e9e 0%,#62e200 46%,#62e200 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f79e9e', endColorstr='#62e200',GradientType=1 ); /* IE6-9 */
+
     &:hover{
       background: #2cff24;
     }
@@ -497,6 +515,7 @@ li{
   .yellow{
     width: 100%;
     background: yellow;
+    opacity: 0.5;
     display: inline-block;
   }
 }
