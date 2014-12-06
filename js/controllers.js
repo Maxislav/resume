@@ -84,9 +84,7 @@ navControllers.controller('home', function ($scope, $http, $routeParams, $rootSc
 
 
 appm.service('showService', function(){
-    this.show = function(){
-        alert('dd');
-    }
+
 })
 
 

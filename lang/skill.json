@@ -1,15 +1,24 @@
 [
     {
-        "text": "jQuery",
+        "text": " jQuery (jQuery-ui etc.)",
         "start": "2012.01.01"
     },
     {
-        "text": "Sencha",
-        "start": "2013.03.01",
-        "end": "2013.09.01"
+        "text": "Sencha Touch2, ExtJS",
+        "start": "2013.04.01",
+        "st": "30",
+        "end": "2013.10.01"
+    },
+    {
+        "text": "Require.js",
+        "start": "2013.12.01"
     },
     {
         "text": "Angular",
         "start": "2014.10.01"
+    },
+    {
+        "text": "Lodash",
+        "start": "2013.12.01"
     }
 ]

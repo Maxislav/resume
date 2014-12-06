@@ -453,5 +453,63 @@ li{
 .inline-block{
   display: inline-block;
 }
+.text-skill{
 
+}
+.graph-block-skill{
+  overflow: hidden;
+  height: 0;
+  transition: 0.1s linear;
+  &.show{
+    height: 280px;
+  }
+}
+.block-skill{
+  position: relative;
+  height: 20px;
+  width: 100%;
+  background: gray;
+  overflow: hidden;
 
+  &.show{
+    height: inherit;
+  }
+  &>div{
+    position: absolute;
+    height: 100%;
+
+    left: 0;
+    top:0;
+
+  }
+  .text-from{
+    text-indent: 0;
+    padding: 5px;
+    background: transparent;
+    margin-top: -5px;
+  }
+  .green{
+    background: limegreen;
+    &:hover{
+      background: #2cff24;
+    }
+  }
+  .yellow{
+    width: 100%;
+    background: yellow;
+    display: inline-block;
+  }
+}
+.button{
+  background: @navColor;
+  border-color: @border-color;
+  border-radius: 3px;
+  padding: 5px 10px;
+  display: inline-block;
+  text-indent: 0;
+  cursor: pointer;
+  &:active{
+    color: gray;
+    background: #ffffff;
+  }
+}

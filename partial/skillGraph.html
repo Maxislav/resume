@@ -1,7 +1,21 @@
 <div>
-  <ul>
+  <ul class="none">
       <li ng-repeat="skill in skills">
+          <div class="text-skill">
+
+          </div>
             {{skill.text}} : {{skill.start}} {{skill.end}}
+          <div class="block-skill">
+            <div class="green" start="{{skill.valueStart}}" width="{{skill.valueWidth}}">
+
+            </div>
+            <div class="yellow" not-use="{{skill.valueNotUse}}" >
+
+            </div>
+            <div class="text-from"  start="{{skill.valueStart}}" >
+                {{skill.dateStart | date:'MMM yyyy'}}
+            </div>
+          </div>
       </li>
   </ul>
 </div>
