@@ -64,7 +64,7 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
 navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
     function getContent() {
         $scope.content = 'module/home/home_'+$scope.lang+'.html';
-        $scope.includeHtml = 'module/home/expiriens_'+$scope.lang+'.html';
+        $scope.includeHtml = 'module/home/skills_'+$scope.lang+'.html';
     }
 
 
@@ -158,6 +158,9 @@ navControllers.controller('print', function ($scope, $http, $routeParams, $rootS
             $scope.text = data;
         });
         $scope.content = 'module/print/print_'+$scope.lang+'.html';
+        $scope.includeHtml = 'module/home/skills_'+$scope.lang+'.html';
+        $scope.experienceUrl = 'module/about/about_'+$scope.lang+'.html';
+
     }
     getContent();
     $scope.act.call($scope.el[5]);
