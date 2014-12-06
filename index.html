@@ -22,8 +22,64 @@
 <body>
 
 
-    <div class="body" data-ng-include data-src="'partial/block.html'"></div>
+    <!--<div class="body" data-ng-include data-src="'partial/block.html'"></div>-->
 
+    <div>
+        <div class="back">
+            <div class="back-head" style=" height: 100px; position: relative; border-bottom: 2px solid white">
+            </div>
+            <div class="back-nav" style="height: 41px; position: relative">
+            </div>
+        </div>
+        <div style="position: absolute; width: 100%">
+            <div class="main-block">
+                <div class="contact-to-print">
+                    <div class="item">
+                        <div style="text-align: right">
+                            <div>
+                                <h3> Maxim Lipatov</h3>
+                            </div>
+                            <p>Adress Ukraine, Kiev</p>
+
+                            <p>Mobile Phone +38098 556-6570 </p>
+
+                            <p>e-mail: lmaxim@mail.ru </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div ng-controller="nav">
+                    <div class="head no-print" directive-name="lang">
+                        <div class="action">
+                            <div class="inline-block">
+                                {{langPpd.release}} {{langPpd.releaseDate}}
+                            </div>
+                            <div class="download">
+                                <a class=" no-print" href="{{olo}}" download="CV_Lipatov">{{download}} </a>
+                            </div>
+                            <select ng-model="lang" ng-change="chLang('{{lang}}')">
+                                <option value="ru">Ru</option>
+                                <option value="en">En</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="book" style=" border-top: 1px solid transparent">
+                        <div class="nav-panel no-print" style="margin-top: 10px" >
+                            <div >
+                                <a class="{{cl[$index]}}"  ng-init="initEl(this)" ng-repeat="nav in navs" href="{{nav.href}}">
+                                    {{nav.t}}
+                                </a>
+                            </div>
+                        </div>
+                        <div style="clear: both;"  class="view-container" kkk>
+                            <div ng-view  class="view-frame">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

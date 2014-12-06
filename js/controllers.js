@@ -37,10 +37,10 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
         $rootScope.changeLang();
     }
     var loc = '' + $location.path();
-    $location.path('/');
-    setTimeout(function () {
+    //$location.path('/');
+    /*setTimeout(function () {
           window.location.href = '#' + (loc ? loc : '/home')
-    }, 1)
+    }, 1)*/
     $scope.cl = $scope.cl ? $scope.cl : [];
     $scope.el = $scope.el ? $scope.el : [];
     $scope.act = function () {
