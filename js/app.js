@@ -12,18 +12,9 @@ var appm = angular.module('appm', [
             });
         }
     })
-  /*  .directive('transport', function(){
-        return function ($scope, element, attrs) {
-            element
-            $scope.transport = element
-            //angular.bootstrap(element, [])
-        }
-    })*/
-
     .directive('kkk', function(){
         return function ($scope, element, attrs) {
             element
-            //angular.bootstrap(element, [])
         }
     })
     .run(function ($rootScope, $location) {
@@ -31,8 +22,6 @@ var appm = angular.module('appm', [
 
         }
         $rootScope.orbit;
-
-        // $location.path('/contact')
     })
 
 

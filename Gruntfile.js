@@ -1,44 +1,37 @@
 module.exports = function (grunt) {
 
     // Задачи
-    grunt.initConfig({
-        // Склеиваем
-        concat: {
-            main: {
-                src: [
+    var uglyFiles = [
+        'lib/angular/angular.min.js',
+        'lib/angular/angular-route.min.js',
+        'lib/angular/angular-animate.js',
+        'lib/angular/angular-sanitize.js',
+        'lib/jQuery/jquery-1.11.0.min.js',
+        'lib/jQuery/jquery.scrollNav.min.js',
+        'js/app.js',
+        'js/controllers.js'
+    ];
 
-                    'lib/angular/angular.min.js',
-                    'lib/angular/angular-route.min.js',
-                    'lib/angular/angular-animate.js',
-                    'lib/angular/angular-sanitize.js',
-					'lib/jQuery/jquery-1.11.0.min.js',
-					'lib/jQuery/jquery.scrollNav.min.js',
-                    'js/app.js',
-                    'js/controllers.js'
-                ],
-                dest: 'build/scripts.js'
-            }
-        },
-// сжимаем
+    grunt.initConfig({
         uglify: {
-            options: {
-                sourceMap: true,
-                mangle: false,
-                exportAll: true
-            },
-            main: {
+            dev: {
+                options: {
+                    sourceMap: true,
+                    mangle: false,
+                    exportAll: true
+                },
                 files: {
-                    // Результат задачи concat
-                    'build/scripts.min.js': [
-                        'lib/angular/angular.min.js',
-                        'lib/angular/angular-route.min.js',
-                        'lib/angular/angular-animate.js',
-                        'lib/angular/angular-sanitize.js',
-                        'lib/jQuery/jquery-1.11.0.min.js',
-                        'lib/jQuery/jquery.scrollNav.min.js',
-                        'js/app.js',
-                        'js/controllers.js'
-                    ]
+                    'build/scripts.min.js': uglyFiles
+                }
+            },
+            prod:{
+                options: {
+                    sourceMap: false,
+                    mangle: false,
+                    exportAll: true
+                },
+                files: {
+                    'build/scripts.min.js': uglyFiles
                 }
             }
         },
@@ -66,6 +59,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        'string-replace':{
+            index: {
+                files: {
+                    'index.html': 'index.html'
+                },
+                options: {
+                    replacements: [ {
+                        pattern: /build\/scripts.min.js\?v=[^"]+/,
+                        replacement: function(){
+                            return 'build/scripts.min.js?v='+dateProd()
+                        }
+                    }]
+                }
+            }
+        },
 
         watch: {
             styles: {
@@ -89,7 +97,7 @@ module.exports = function (grunt) {
                     'js/app.js',
                     'js/controllers.js'
                 ],
-                tasks: ['uglify'],
+                tasks: ['uglify:dev'],
                 options: {
                     nospawn: true
                 }
@@ -98,14 +106,22 @@ module.exports = function (grunt) {
 
     });
 
+    function dateProd(){
+        var d = new Date()
+        return d.getFullYear()+'.'+ (d.getMonth()+1)+'.'+ d.getDate()+'-'+
+        d.getHours()+':'+ d.getMinutes()+':'+ d.getSeconds();
+    }
+
     // Загрузка плагинов, установленных с помощью npm install
     grunt.loadNpmTasks('grunt-contrib-concat');//
     grunt.loadNpmTasks('grunt-contrib-uglify');//
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
+    grunt.loadNpmTasks('grunt-string-replace');
 
     // Задача по умолчанию
-    grunt.registerTask('default', ['uglify','less', 'watch' ]);
+    grunt.registerTask('default', ['uglify:dev','less', 'watch' ]);
+    grunt.registerTask('prod', ['uglify:prod','less','string-replace']);
     //grunt.registerTask('default', ['uglify' ]);
 
 };

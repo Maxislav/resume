@@ -23,24 +23,16 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
             default :
 				$scope.olo = 'Lipatov_ru.pdf';
                 $scope.download = 'Скачать';
-
-
         }
-
         lang($scope.lang);
         $scope.chContent && $scope.chContent(p)
         $rootScope.changeLang();
     }
     var loc = '' + $location.path();
     $location.path('/');
-
-
-
-
     setTimeout(function () {
           window.location.href = '#' + (loc ? loc : '/home')
     }, 1)
-
     $scope.cl = $scope.cl ? $scope.cl : [];
     $scope.el = $scope.el ? $scope.el : [];
     $scope.act = function () {
@@ -64,7 +56,10 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
 navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
     function getContent() {
         $scope.content = 'module/home/home_'+$scope.lang+'.html';
+        $scope.includeHtml = 'module/home/expiriens_'+$scope.lang+'.html';
     }
+
+
     getContent();
     $scope.act.call($scope.el[0]);
 
@@ -109,7 +104,6 @@ navControllers.controller('web', function ($scope, $http, $routeParams, $rootSco
 		});
 		if($routeParams.type){
 			$scope.content = 'module/web/'+$routeParams.type+'/'+$routeParams.type+'_'+$scope.lang+'.html';
-            ///$($scope.content).css({opacity:1})
 		}else{
 			$scope.content = 'module/web/web_'+$scope.lang+'.html';
 		}
@@ -158,7 +152,6 @@ navControllers.controller('print', function ($scope, $http, $routeParams, $rootS
         });
         $scope.content = 'module/print/print_'+$scope.lang+'.html';
     }
-
     getContent();
     $scope.act.call($scope.el[5]);
     $rootScope.changeLang = function () {
