@@ -1,11 +1,16 @@
 'use strict';
 
 var el
-appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootScope, showService) {
+appm.controller('nav', function ($scope, $http, $location, showService, $rootScope) {
     //  showService.show()
     function lang(l) {
         $http.get('lang/' + l + '.json').success(function (data) {
             $scope.navs = data;
+            for(var i = 0; i< $scope.navs.length; i++){
+                if($scope.navs[i].href ==  showService.activeString ){
+                    $scope.navs[i].active = 'active'
+                }
+            }
         });
     };
     function langPpd(l){
@@ -21,6 +26,7 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
     $scope.download = 'Download'
 	$scope.olo = 'Lipatov_en.pdf'
     $scope.chLang = function (p) {
+        showService.el = []
         switch (p){
             case 'ru':
 				$scope.olo = 'Lipatov_en.pdf';
@@ -33,26 +39,9 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
         }
         lang($scope.lang);
         langPpd($scope.lang);
-        $scope.chContent && $scope.chContent(p)
-        $rootScope.changeLang();
-    }
-    var loc = '' + $location.path();
-    //$location.path('/');
-    /*setTimeout(function () {
-          window.location.href = '#' + (loc ? loc : '/home')
-    }, 1)*/
-    $scope.cl = $scope.cl ? $scope.cl : [];
-    $scope.el = $scope.el ? $scope.el : [];
-    $scope.act = function () {
-        for (var i = 0; i < $scope.cl.length; i++) {
-            (this.$index != i) && ($scope.cl[i] = null)
-        }
-        $scope.cl[this.$index] = 'active';
-    }
-    $scope.initEl = function (el) {
-        $scope.el.push(this)
-    }
+        $rootScope.changeLang()
 
+    }
     $scope.getLocation = function () {
         return $location.path()
     }
@@ -61,34 +50,25 @@ appm.controller('nav', function ($scope, $http, $location, $routeParams, $rootSc
     }
 })
 
-navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope ) {
+navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope, showService ) {
     function getContent() {
         $scope.content = 'module/home/home_'+$scope.lang+'.html';
         $scope.includeHtml = 'module/home/skills_'+$scope.lang+'.html';
     }
-
+    showService.active('#/home')
 
     getContent();
-    $scope.act.call($scope.el[0]);
-
-
     $rootScope.changeLang = function () {
         getContent()
     }
 
-    $scope.inittt = function(){
-        getContent()
-    }
 })
 
 
 
-appm.service('showService', function(){
-
-})
 
 
-navControllers.controller('about', function ($scope, $http, $routeParams, $rootScope) {
+navControllers.controller('about', function ($scope, $http, $routeParams, $rootScope,showService) {
 	function getContent() {
 		$http.get('module/about/' + $scope.lang + '.json').success(function (data) {
 			$scope.text = data;
@@ -97,13 +77,13 @@ navControllers.controller('about', function ($scope, $http, $routeParams, $rootS
 	}
 
 	getContent();
-	$scope.act.call($scope.el[1]);
+    showService.active('#/about')
 	$rootScope.changeLang = function () {
 		getContent()
 	}
 })
 
-navControllers.controller('web', function ($scope, $http, $routeParams, $rootScope) {
+navControllers.controller('web', function ($scope, $http, $routeParams, $rootScope,showService) {
 	function getContent() {
 		$http.get('module/web/' + $scope.lang + '.json').success(function (data) {
 			$scope.text = data;
@@ -117,26 +97,29 @@ navControllers.controller('web', function ($scope, $http, $routeParams, $rootSco
 	getContent();
     $scope.pp = 'block';
 
-	$scope.act.call($scope.el[2]);
+    showService.active('#/web')
 	$rootScope.changeLang = function () {
 		getContent()
 	}
 });
-navControllers.controller('contact', function ($scope, $http, $routeParams, $rootScope) {
+navControllers.controller('contact', function ($scope, $http, $routeParams, $rootScope, showService) {
     function getContent() {
+
         $http.get('module/contact/' + $scope.lang + '.json').success(function (data) {
             $scope.text = data;
+
         });
         $scope.content = 'module/contact/contact_'+$scope.lang+'.html';
     };
     getContent();
-    $scope.act.call($scope.el[4]);
+
+    showService.active('#/contact')
     $rootScope.changeLang = function () {
         getContent()
     }
 })
 
-navControllers.controller('design', function ($scope, $http, $routeParams, $rootScope) {
+navControllers.controller('design', function ($scope, $http, $routeParams, $rootScope, showService) {
     function getContent() {
         $http.get('module/design/' + $scope.lang + '.json').success(function (data) {
             $scope.text = data;
@@ -145,12 +128,12 @@ navControllers.controller('design', function ($scope, $http, $routeParams, $root
     }
 
     getContent();
-    $scope.act.call($scope.el[3]);
+    showService.active('#/design')
     $rootScope.changeLang = function () {
         getContent()
     }
 })
-navControllers.controller('print', function ($scope, $http, $routeParams, $rootScope) {
+navControllers.controller('print', function ($scope, $http, $routeParams, $rootScope, showService) {
     function getContent() {
         $http.get('module/print/' + $scope.lang + '.json').success(function (data) {
             $scope.text = data;
@@ -161,7 +144,7 @@ navControllers.controller('print', function ($scope, $http, $routeParams, $rootS
 
     }
     getContent();
-    $scope.act.call($scope.el[5]);
+    showService.active('#/print')
     $rootScope.changeLang = function () {
         getContent()
     }

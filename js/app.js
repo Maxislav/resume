@@ -4,13 +4,13 @@ var appm = angular.module('appm', [
         'navControllers',
         'phonecatAnimations'
     ])
-    .directive('viewContainer',function () {
+   /* .directive('viewContainer',function () {
         return function ($scope, element, attrs) {
             $scope.$watch(attrs.viewContainer, function (value) {
                 $scope.element = null
             });
         }
-    })
+    })*/
     .directive('kkk', function(){
         return function ($scope, element, attrs) {
             element
@@ -132,6 +132,31 @@ var navControllers = angular.module('navControllers', [ ])
 navControllers.run(function ($rootScope) {
     $rootScope.orbit = null;
     $rootScope.jscroll = null;
+
 })
+navControllers.directive('navsElements', function(showService){
+    return {
+        restrict: 'A',
+        link: function(scope, el, attr){
+            showService.el.push(el)
+        }
+    }
+})
+navControllers.service('showService', function(){
+    var s = this;
+    this.el = [];
+    this.activeString = null;
+    this.active = function(string){
+        for(var i = 0; i< s.el.length; i++){
+            if(s.el[i].attr('href')==string){
+                s.el[i].addClass('active')
+                s.activeString = string
+            }else{
+                s.el[i].removeClass('active')
+            }
+        }
+    }
+})
+
 
 

@@ -20,5 +20,26 @@
     {
         "text": "Lodash",
         "start": "2013.12.01"
+    },
+    {
+        "text": "Dust.js",
+        "start": "2013.11.01",
+        "end": "2014.05.01"
+    },
+    {
+        "text": "Jquery Templates",
+        "start": "2014.05.01"
+    },
+    {
+        "text": " SVN Revision control",
+        "start": "2013.05.01",
+        "end": "2014.05.01"
+
+    },
+    {
+        "text": " GIT Revision control",
+        "start": "2013.12.01"
+
+
     }
 ]
