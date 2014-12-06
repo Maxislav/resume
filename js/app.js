@@ -6,7 +6,6 @@ var appm = angular.module('appm', [
     ])
     .directive('viewContainer',function () {
         return function ($scope, element, attrs) {
-            //element
             $scope.$watch(attrs.viewContainer, function (value) {
                 $scope.element = null
             });
@@ -59,8 +58,7 @@ appm.config(['$routeProvider',
                 controller: 'print'
             }).
             otherwise({
-                //redirectTo: '/home'
-                // controller: 'print'
+                redirectTo: '/home'
             })
 
     }

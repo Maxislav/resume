@@ -1,6 +1,5 @@
 module.exports = function (grunt) {
-
-    // Задачи
+    var dateFormat = require('./dateFormat');
     var uglyFiles = [
         'lib/angular/angular.min.js',
         'lib/angular/angular-route.min.js',
@@ -11,6 +10,7 @@ module.exports = function (grunt) {
         'js/app.js',
         'js/controllers.js'
     ];
+
 
     grunt.initConfig({
         uglify: {
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                     'build/scripts.min.js': uglyFiles
                 }
             },
-            prod:{
+            prod: {
                 options: {
                     sourceMap: false,
                     mangle: false,
@@ -48,7 +48,6 @@ module.exports = function (grunt) {
                      sourceMapRootpath: '../'*/
                 },
                 files: {
-                    //  "module/dtp/dtp.css": "module/dtp/dtp.less",
                     "build/index.css": [
                         "css/main.less",
                         'css/animation.css',
@@ -59,22 +58,43 @@ module.exports = function (grunt) {
                 }
             }
         },
-        'string-replace':{
+        'string-replace': {
             index: {
                 files: {
                     'index.html': 'index.html'
                 },
                 options: {
-                    replacements: [ {
-                        pattern: /build\/scripts.min.js\?v=[^"]+/,
-                        replacement: function(){
-                            return 'build/scripts.min.js?v='+dateProd()
+                    replacements: [
+                        {
+                            pattern: /build\/scripts.min.js\?v=[^"]+/,
+                            replacement: function () {
+                                return 'build/scripts.min.js?v=' + dateProd('-')
+                            }
                         }
-                    }]
+                    ]
+                }
+            },
+            ppd: {
+                files: {
+                    'lang/': [
+                        'lang/ppd.ru.json',
+                        'lang/ppd.en.json'
+                    ]
+
+                },
+                options: {
+                    replacements: [
+                        {
+
+                            pattern: /"(releaseDate":\s")[^"]+/,
+                            replacement: function () {
+                                return "\"releaseDate\": \"" + dateProd()
+                            }
+                        }
+                    ]
                 }
             }
         },
-
         watch: {
             styles: {
                 // Which files to watch (all .less files recursively in the less directory)
@@ -106,22 +126,19 @@ module.exports = function (grunt) {
 
     });
 
-    function dateProd(){
-        var d = new Date()
-        return d.getFullYear()+'.'+ (d.getMonth()+1)+'.'+ d.getDate()+'-'+
-        d.getHours()+':'+ d.getMinutes()+':'+ d.getSeconds();
+    function dateProd(string) {
+        string = string||' '
+        var date = dateFormat.format.date( new Date(), 'yyyy.MM.dd'+string+'HH:mm:ss')
+        return date;
     }
 
-    // Загрузка плагинов, установленных с помощью npm install
+
     grunt.loadNpmTasks('grunt-contrib-concat');//
     grunt.loadNpmTasks('grunt-contrib-uglify');//
     grunt.loadNpmTasks('grunt-contrib-less');//
     grunt.loadNpmTasks('grunt-contrib-watch');//
     grunt.loadNpmTasks('grunt-string-replace');
 
-    // Задача по умолчанию
-    grunt.registerTask('default', ['uglify:dev','less', 'watch' ]);
-    grunt.registerTask('prod', ['uglify:prod','less','string-replace']);
-    //grunt.registerTask('default', ['uglify' ]);
-
+    grunt.registerTask('default', ['uglify:dev', 'less', 'watch' ]);
+    grunt.registerTask('prod', ['uglify:prod', 'less', 'string-replace']);
 };
