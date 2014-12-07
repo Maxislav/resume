@@ -22,13 +22,21 @@
         "start": "2013.12.01"
     },
     {
-        "text": "Dust.js",
+        "text": "Dust Templates",
         "start": "2013.11.01",
         "end": "2014.05.01"
     },
     {
         "text": "Jquery Templates",
         "start": "2014.05.01"
+    },
+    {
+        "text": "LESS extends CSS style",
+        "start": "2014.03.01"
+    },
+    {
+        "text": "SASS extends CSS style",
+        "start": "2014.11.01"
     },
     {
         "text": " SVN Revision control",
@@ -39,7 +47,5 @@
     {
         "text": " GIT Revision control",
         "start": "2013.12.01"
-
-
     }
 ]
