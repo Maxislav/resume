@@ -102,22 +102,6 @@ navControllers.controller('web', function ($scope, $http, $routeParams, $rootSco
 		getContent()
 	}
 });
-navControllers.controller('contact', function ($scope, $http, $routeParams, $rootScope, showService) {
-    function getContent() {
-
-        $http.get('module/contact/' + $scope.lang + '.json').success(function (data) {
-            $scope.text = data;
-
-        });
-        $scope.content = 'module/contact/contact_'+$scope.lang+'.html';
-    };
-    getContent();
-
-    showService.active('#/contact')
-    $rootScope.changeLang = function () {
-        getContent()
-    }
-})
 
 navControllers.controller('design', function ($scope, $http, $routeParams, $rootScope, showService) {
     function getContent() {

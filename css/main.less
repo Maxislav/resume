@@ -459,8 +459,10 @@ li{
 .graph-block-skill{
   overflow: hidden;
   height: 0;
-  transition: 0.1s linear;
+  opacity: 0;
+  transition: 0.2s linear;
   &.show{
+    opacity: 1;
     height: 400px;
   }
 }
@@ -541,4 +543,8 @@ li{
   display: inline-block;
   padding: 5px;
 
+}
+#map{
+  height: 400px;
+  background: #cdcdcd;
 }

@@ -7,9 +7,12 @@ module.exports = function (grunt) {
         'lib/angular/angular-sanitize.js',
         'lib/jQuery/jquery-1.11.0.min.js',
         'lib/jQuery/jquery.scrollNav.min.js',
+        'lib/leaflet/leaflet.js',
         'js/app.js',
         'js/controllers.js',
+        'module/contact/contact.js',
         'js/dirrectiveSkill.js'
+
     ];
 
 
