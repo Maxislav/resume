@@ -1,16 +1,9 @@
-angular.module('phonecatAnimations', ['ngAnimate'])
+//angular.module('phonecatAnimations', ['ngAnimate'])
 var appm = angular.module('appm', [
         'ngRoute',
         'navControllers',
-        'phonecatAnimations'
+        'ngAnimate'
     ])
-   /* .directive('viewContainer',function () {
-        return function ($scope, element, attrs) {
-            $scope.$watch(attrs.viewContainer, function (value) {
-                $scope.element = null
-            });
-        }
-    })*/
     .directive('kkk', function(){
         return function ($scope, element, attrs) {
             element
