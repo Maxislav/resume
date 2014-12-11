@@ -55,10 +55,9 @@ module.exports = function (grunt) {
                     "build/index.css": [
                         "css/main.less",
                         'css/animation.css',
-                        "lib/jQuery/orbit-1.3.0.css"
-
+                        "lib/jQuery/orbit-1.3.0.css",
+                        "lib/leaflet/leaflet.css"
                     ]
-
                 }
             }
         },
@@ -73,6 +72,12 @@ module.exports = function (grunt) {
                             pattern: /build\/scripts.min.js\?v=[^"]+/,
                             replacement: function () {
                                 return 'build/scripts.min.js?v=' + dateProd('-')
+                            }
+                        },
+                        {
+                            pattern: /build\/index.css\?v=[^"]+/,
+                            replacement: function () {
+                                return 'build/index.css?v=' + dateProd('-')
                             }
                         }
                     ]
