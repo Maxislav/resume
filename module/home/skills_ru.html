@@ -23,28 +23,18 @@
         <li>
             <h3>JavaScript</h3>
             <ul class="none">
-                <li>
-                    jQuery (jQuery-ui etc.) 2012 - по настроящее время
+                <li ng-repeat="skill in skills" class="skills-textt-container-row">
+                    <div class="inline-block text" >
+                        <b> {{skill.text}}</b>
+                    </div>
+                    <div class="inline-block">
+                        {{skill.dateStart | date:'MMMM yyyy'}}
+                        &mdash;
+                        {{skill.dateEnd || langPpd.TO_PRESENT_TIME | date:'MMMM yyyy'}}
+                    </div>
                 </li>
-
-                <li>
-                    Sencha Touch2 (six months experience). Апрель 2013 - Октябрь 2013
-                </li>
-                <li>
-                    ExtJS (not often used, but this framework - Sencha family group)
-                </li>
-
-                <li>
-                    Require.js (three months experience). Декабрь 2013 - по настоящее время
-                </li>
-                <li>
-                    Angular. Ноябрь 2014 - по настроящее время
-                </li>
-                <li>
-                    Lodash.  Декабрь 2013 - по настоящее время
-                </li>
-
             </ul>
+
             <h3> Шаблонизаторы </h3>
             <ul class="none">
                 <li>
