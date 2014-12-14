@@ -126,24 +126,10 @@ body{
 
 }
 @media (max-width: 1000px) {
-  .main-block{
-    width: 100%;
-    margin: 0 auto;
-  }
-  .content{
-	padding: 10px 5px;
-  }
-}
-
-@media (min-width: 1000px) {
-  .main-block{
-    width: 1000px;
-    margin: 0 auto;
-  }.content{
-	   padding: 20px 40px;
-	 }
 
 }
+
+
 
 .head{
   background: url("../img/zagolovok.jpg");
@@ -564,8 +550,48 @@ li{
   background: #cdcdcd;
 }
 .skills-textt-container-row{
-
   .text{
     width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
   }
+}
+@media (min-width: 1000px) {
+  .main-block{
+    width: 100%;
+    margin: 0 auto;
+    width: 1000px;
+    margin: 0 auto;
+  }
+  .content{
+    padding: 10px 5px;
+  }
+  .content{
+     padding: 20px 40px;
+   }
+
+}
+@media (max-width: 760px) {
+  .skills-textt-container-row{
+    &>div.inline-block{
+      display: block;
+    }
+    .text{
+      margin-top: 5px;
+    }
+  }
+}
+@media print{
+  .skills-textt-container-row{
+    &>div.inline-block{
+    text-indent: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      display: inline-block;
+    }
+  }
+}
+.hidden-line{
+  border-bottom: 1px solid gray;
+  visibility: hidden;
 }
