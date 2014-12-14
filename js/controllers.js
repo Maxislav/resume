@@ -50,12 +50,13 @@ appm.controller('nav', function ($scope, $http, $location, showService, $rootSco
     }
 })
 
-navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope, showService ) {
+navControllers.controller('home', function ($scope, $http, $routeParams, $rootScope, showService, factSkill ) {
     function getContent() {
         $scope.content = 'module/home/home_'+$scope.lang+'.html';
         $scope.includeHtml = 'module/home/skills_'+$scope.lang+'.html';
     }
     showService.active('#/home')
+    factSkill.getSk($scope);
 
     getContent();
     $rootScope.changeLang = function () {
@@ -117,7 +118,7 @@ navControllers.controller('design', function ($scope, $http, $routeParams, $root
         getContent()
     }
 })
-navControllers.controller('print', function ($scope, $http, $routeParams, $rootScope, showService) {
+navControllers.controller('print', function ($scope, $http, $routeParams, $rootScope, showService, factSkill ) {
     function getContent() {
         $http.get('module/print/' + $scope.lang + '.json').success(function (data) {
             $scope.text = data;
@@ -125,6 +126,7 @@ navControllers.controller('print', function ($scope, $http, $routeParams, $rootS
         $scope.content = 'module/print/print_'+$scope.lang+'.html';
         $scope.includeHtml = 'module/home/skills_'+$scope.lang+'.html';
         $scope.experienceUrl = 'module/about/about_'+$scope.lang+'.html';
+        factSkill.getSk($scope);
 
     }
     getContent();

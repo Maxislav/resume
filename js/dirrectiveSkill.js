@@ -63,10 +63,11 @@ navControllers.factory('factSkill', function($http, $timeout){
             arr[i].valueStart = setStartDate(arr[i].start || 0);
             arr[i].valueWidth =setWidth(arr[i].start|| 0, arr[i].end||0);
             arr[i].valueNotUse = setNotUse(arr[i].end||0);
-            arr[i].dateStart = getDateStart(arr[i].start)
+            arr[i].dateStart = getDate(arr[i].start);
+            arr[i].dateEnd = getDate(arr[i].end)
         }
     }
-    function getDateStart(string){
+    function getDate(string){
         var date = null
         var f = parseFloat;
         if(string){
