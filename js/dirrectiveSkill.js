@@ -55,7 +55,7 @@ navControllers.controller('graph', function($scope, vhide){
     }
 })
 navControllers.service('vhide', function(){
-    this.v={};
+    this.v={show: 'show'};
 })
 navControllers.factory('factSkill', function($http, $timeout){
     function formatData(arr){
