@@ -1,8 +1,9 @@
 'use strict';
 
 var el
-appm.controller('nav', function ($scope, $http, $location, showService, $rootScope) {
+appm.controller('nav', function ($scope, $http, $location, showService, $rootScope, $cookies) {
     //  showService.show()
+    $cookies;
     function lang(l) {
         $http.get('lang/' + l + '.json').success(function (data) {
             $scope.navs = data;
@@ -19,23 +20,24 @@ appm.controller('nav', function ($scope, $http, $location, showService, $rootSco
         });
     }
 
-    $scope.lang = "en";
-    lang("en");
-    langPpd("en")
+    $scope.lang = $cookies.get('lang') || "en";
+    lang($scope.lang);
+    langPpd($scope.lang);
 
-    $scope.download = 'Download'
-	$scope.olo = 'Lipatov_en.pdf'
+    $scope.download =  $scope.lang =="ru" ? 'Скачать' : 'Download';
+	$scope.olo = $scope.lang =="ru" ? 'Lipatov_en.pdf': 'Lipatov_en.pdf';
     $scope.chLang = function (p) {
         showService.el = []
         switch (p){
             case 'ru':
 				$scope.olo = 'Lipatov_en.pdf';
                 $scope.download = 'Download';
-
+                $cookies.put("lang", "en");
                 break;
             default :
 				$scope.olo = 'Lipatov_ru.pdf';
                 $scope.download = 'Скачать';
+                $cookies.put("lang", "ru");
         }
         lang($scope.lang);
         langPpd($scope.lang);

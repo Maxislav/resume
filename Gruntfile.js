@@ -1,22 +1,38 @@
 module.exports = function (grunt) {
     var dateFormat = require('./dateFormat');
     var uglyFiles = [
-        'lib/angular/angular.min.js',
-        'lib/angular/angular-route.min.js',
-        'lib/angular/angular-animate.js',
-        'lib/angular/angular-sanitize.js',
-        'lib/jQuery/jquery-1.11.0.min.js',
-        'lib/jQuery/jquery.scrollNav.min.js',
         'lib/leaflet/leaflet.js',
         'js/app.js',
         'js/controllers.js',
         'module/contact/contact.js',
         'js/dirrectiveSkill.js'
-
     ];
 
 
+    var concatFiles = [
+        'lib/angular/angular.min.js',
+        'lib/angular/angular-cookies.min.js',
+        'lib/angular/angular-route.min.js',
+        'lib/angular/angular-animate.min.js',
+        'lib/angular/angular-sanitize.min.js',
+        'lib/jQuery/jquery-1.11.0.min.js',
+        'lib/jQuery/jquery.scrollNav.min.js',
+        'build/temp-uglify.min.js'
+    ]
+
+
     grunt.initConfig({
+        concat: {
+
+            options: {
+                separator: ';\n\n'
+            },
+            dist: {
+                src: concatFiles,
+                dest: 'build/scripts.min.js'
+            }
+
+        },
         uglify: {
             dev: {
                 options: {
@@ -24,9 +40,7 @@ module.exports = function (grunt) {
                     mangle: false,
                     exportAll: true
                 },
-                files: {
-                    'build/scripts.min.js': uglyFiles
-                }
+                files: uglyFiles
             },
             prod: {
                 options: {
@@ -35,7 +49,7 @@ module.exports = function (grunt) {
                     exportAll: true
                 },
                 files: {
-                    'build/scripts.min.js': uglyFiles
+                    'build/temp-uglify.min.js': uglyFiles
                 }
             }
         },
@@ -128,8 +142,8 @@ module.exports = function (grunt) {
     });
 
     function dateProd(string) {
-        string = string||' '
-        var date = dateFormat.format.date( new Date(), 'yyyy.MM.dd'+string+'HH:mm:ss')
+        string = string || ' '
+        var date = dateFormat.format.date(new Date(), 'yyyy.MM.dd' + string + 'HH:mm:ss')
         return date;
     }
 
@@ -140,6 +154,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');//
     grunt.loadNpmTasks('grunt-string-replace');
 
+
     grunt.registerTask('default', ['uglify:dev', 'less', 'watch' ]);
-    grunt.registerTask('prod', ['uglify:prod', 'less', 'string-replace']);
+    grunt.registerTask('prod', ['uglify:prod', 'concat', 'less', 'string-replace']);
 };

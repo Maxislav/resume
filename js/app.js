@@ -2,7 +2,8 @@
 var appm = angular.module('appm', [
         'ngRoute',
         'navControllers',
-        'ngAnimate'
+        'ngAnimate',
+        'ngCookies'
     ])
     .directive('kkk', function(){
         return function ($scope, element, attrs) {
