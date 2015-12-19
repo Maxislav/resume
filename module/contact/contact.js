@@ -19,8 +19,7 @@ navControllers.directive('leafletMap', function(){
         restrict: 'A',
         controller: function($scope){
             $scope.map = L.map('map').setView([50.4, 30.48], 11);
-            console.log('a');
-            L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+            L.tileLayer('http://mt0.googleapis.com/vt/lyrs=m@207000000&hl=ru&src=api&x={x}&y={y}&z={z}&s=Galile', {
                 maxZoom: 18,
                 id: 'examples.map-i875mjb7'
             }).addTo($scope.map);
