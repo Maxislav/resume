@@ -18,7 +18,7 @@ module.exports = function (grunt) {
         'lib/jQuery/jquery-1.11.0.min.js',
         'lib/jQuery/jquery.scrollNav.min.js',
         'build/temp-uglify.min.js'
-    ]
+    ];
 
 
     grunt.initConfig({
@@ -40,7 +40,9 @@ module.exports = function (grunt) {
                     mangle: false,
                     exportAll: true
                 },
-                files: uglyFiles
+                files: {
+                    'build/temp-uglify.min.js': uglyFiles
+                }
             },
             prod: {
                 options: {
