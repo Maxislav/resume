@@ -8,5 +8,8 @@
     "grunt-contrib-uglify": "",
     "grunt-contrib-concat": "",
     "grunt-string-replace": "~1.0.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-uglify": "^0.11.0"
   }
 }
