@@ -1,8 +1,12 @@
 [
     {
-      "text": " Android (native)",
-      "start": "2015.03.01"
+        "text": " Angular 2 (typescript)",
+        "start": "2016.08.01"
 
+    },
+    {
+        "text": "Angular",
+        "start": "2014.10.01"
     },
     {
       "text": " Phonegap (for Android)",
@@ -23,10 +27,7 @@
         "text": "Require.js",
         "start": "2013.12.01"
     },
-    {
-        "text": "Angular",
-        "start": "2014.10.01"
-    },
+
     {
         "text": "AngularJS E2E Testing Using Protractor",
         "start": "2014.11.01"
@@ -65,5 +66,10 @@
     {
         "text": " GIT Revision control",
         "start": "2013.12.01"
+    },
+    {
+        "text": " Android (native)",
+        "start": "2015.03.01"
+
     }
 ]
