@@ -61,16 +61,20 @@ appm.config(['$routeProvider',
 var navControllers = angular.module('navControllers', [ ])
     .directive('orbit', function ($http, $rootScope) {
         return function ($scope, element, attrs) {
+	        Array.prototype.forEach.call(element[0].children,(child)=>{
+		        child.style.width = element.width()+'px'
+	        } );
             if (!$rootScope.orbit) {
                 $http.get('lib/jQuery/jquery.orbit-1.3.0.js').success(function (data) {
                     $rootScope.orbit = data;
                     eval(data);
-                    $(element).orbit()
+                    $(element).orbit();
                     $(element).css({opacity: 1})
 
                 })
 
             } else {
+
                 $(element).orbit();
                 $(element).css({opacity: 1})
             }
